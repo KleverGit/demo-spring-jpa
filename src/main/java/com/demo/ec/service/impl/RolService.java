@@ -1,5 +1,8 @@
 package com.demo.ec.service.impl;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +17,16 @@ public class RolService implements IRolService {
 	private RolRepository rolRepository;
 
 	@Override
-	public Rol save(Rol rol) {
-		return this.rolRepository.save(rol);
+	public Set<Rol> save(Set<Rol> roles) {
+		Set<Rol> rolesSave = new HashSet<>(); 
+		for (Rol rolSave : roles) {
+			rolesSave.add(this.rolRepository.save(rolSave)); 
+		}
+		return rolesSave;
+	}
+	
+	public Rol findById (Long id) {
+		return this.rolRepository.findById(id).get();
 	}
 
 }

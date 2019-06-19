@@ -24,6 +24,15 @@ public class UsuarioRol {
 	@JoinColumn(name = "idRol")
 	private Rol rol;
 
+	public UsuarioRol() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public UsuarioRol(Usuario usuario, Rol rol) {
+		this.usuario = usuario;
+		this.rol = rol;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -47,6 +56,5 @@ public class UsuarioRol {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-
 
 }
